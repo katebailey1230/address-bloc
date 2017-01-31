@@ -12,6 +12,7 @@
      # #2
      puts "Main Menu - #{address_book.entries.count} entries"
      puts "1 - View all entries"
+     puts "6 - View Entry Number n"
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
@@ -26,6 +27,10 @@
       when 1
         system "clear"
         view_all_entries
+        main_menu
+      when 6
+        system "clear"
+        view_entry_number
         main_menu
       when 2
         system "clear"
@@ -84,6 +89,20 @@
      puts "New entry created"
   end
 
+  def view_entry_number
+    print "Entry Number: "
+    selection = gets.chomp.to_i
+
+    if selection < address_book.entries.count
+      puts address_book.entries(selection)
+      puts "Press enter to return to the main menu"
+      gets.chomp
+      system "clear"
+    else
+      puts "#{selection} is not a valid number"
+      view_entry_number
+  end
+
   def search_entries
   end
 
@@ -116,5 +135,5 @@
          entry_submenu(entry)
      end
    end
-
+ end
 end
