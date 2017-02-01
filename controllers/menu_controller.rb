@@ -12,11 +12,12 @@
      # #2
      puts "Main Menu - #{address_book.entries.count} entries"
      puts "1 - View all entries"
-     puts "6 - View Entry Number n"
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number n"
+     puts "6 - Blow to Kingdom Come"
+     puts "7 - Exit"
      print "Enter your selection: "
 
      # #3
@@ -27,10 +28,6 @@
       when 1
         system "clear"
         view_all_entries
-        main_menu
-      when 6
-        system "clear"
-        view_entry_number
         main_menu
       when 2
         system "clear"
@@ -45,6 +42,14 @@
         read_csv
         main_menu
       when 5
+        system "clear"
+        view_entry_number
+        main_menu
+      when 6
+        system "clear"
+        nuke
+        main_menu
+      when 7
         puts "Good-bye!"
         # #8
         exit(0)
@@ -142,6 +147,10 @@
     end
    end
 
+   def nuke
+     entries.clear
+   end
+   
    def entry_submenu(entry)
      # #16
      puts "n - next entry"
